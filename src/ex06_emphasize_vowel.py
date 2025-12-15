@@ -13,9 +13,20 @@ Si la vocal no es válida, lanzar ValueError.
 def emphasize_vowel(phrase: str, vowel: str) -> str:
     """
     Convierte a mayúscula todas las apariciones de vowel en la frase.
-    Sugerencia:
-    - Comprueba que vowel es un solo carácter y está en "aeiou" (en minúscula).
-    - Recorre la frase carácter a carácter y construye una nueva cadena.
     """
-    # TODO: validar y transformar
-    raise NotImplementedError("Implementa emphasize_vowel(phrase, vowel)")
+    vowel = vowel.lower()
+    if len(vowel) != 1 or vowel not in "aeiou":
+        raise ValueError("La vocal no es válida. Debe ser una de 'a', 'e', 'i', 'o', 'u'.")
+
+    result = ""
+    for char in phrase:
+        if char.lower() == vowel:
+            result += char.upper()
+        else:
+            result += char
+
+    return result
+
+frase = "Hola mundo"
+vocal = "o"
+print(emphasize_vowel(frase, vocal))
